@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "7897b28b-31f0-4c11-9f14-5a316c7f5e99",
+		"name": "Authentication provider scheme adapter POC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14825450"
+	},
+	"item": [
+		{
+			"name": "[POST] /api/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"Foo\",\n    \"lastname\" : \"Bar\",\n    \"username\" : \"fooBar1\",\n    \"email\" : \"foo1.bar@exaple.org\",\n    \"password\" : \"test@12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{schemeAdapterUrl}}:{{schemeAdapterPort}}/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"{{schemeAdapterUrl}}"
+					],
+					"port": "{{schemeAdapterPort}}",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] /api/auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+							"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "fooBar",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test@12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{schemeAdapterUrl}}:{{schemeAdapterPort}}/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"{{schemeAdapterUrl}}"
+					],
+					"port": "{{schemeAdapterPort}}",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,12 @@
+keycloak:
+  realm: test
+  authUrl: http://127.0.0.1:9090
+  adminClientId: admin-cli
+  adminClientSecret: wKL3IX43LZnCWBxK3I6qbAkI03vft42f
+  applicationClient: test-app
+  applicationClientSecret: AIPS0fQ0DUeJVrxvQSEI1ddGgQknwlHS
+server:
+  port: '8080'
+  error:
+    include-stacktrace: never
+    include-message: always
