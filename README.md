@@ -52,7 +52,7 @@ update REALM set ssl_required='NONE'; # suppress ssl_required for all realms
 
 ## 3- Authentication provider scheme adapter:
 
-In this section, we will show a demo of the use cases that this scheme adapter in this repository covers. We've been using the following Postman collection [](./Authentication provider scheme adapter POC.postman_collection)
+In this section, we will show a demo of the use cases that this scheme adapter in this repository covers. We've been using the following Postman collection [AuthProviderSchemeAdapterPOC.postman_collection.json](./AuthProviderSchemeAdapterPOC.postman_collection.json)
 
 ###  3.1- User registration:
 
